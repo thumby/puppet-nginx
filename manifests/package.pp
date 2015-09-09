@@ -34,7 +34,6 @@ class nginx::package(
   package { 'nginx':
     ensure               => installed,
     provider             => dpkg,
-    reinstall_on_refresh => true,
     source               => $package_path,
     require              => [File[$package_path], Anchor['nginx::package::begin']],
     before               => Anchor['nginx::package::end'],
