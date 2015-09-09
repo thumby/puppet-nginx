@@ -101,7 +101,7 @@ class nginx (
   ### START Package Configuration ###
   $package_source                 = 'nginx',
   $package_ensure                 = 'present',
-  $package_path                   = '/opt/nginx.deb'
+  $package_path                   = '/opt/nginx.deb',
   ### END Package Configuration ###
 
   ### START Service Configuation ###
