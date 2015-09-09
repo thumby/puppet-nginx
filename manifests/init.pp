@@ -99,11 +99,9 @@ class nginx (
   ### END Module/App Configuration ###
 
   ### START Package Configuration ###
-  $package_ensure                 = present,
-  $package_name                   = $::nginx::params::package_name,
   $package_source                 = 'nginx',
-  $package_flavor                 = undef,
-  $manage_repo                    = $::nginx::params::manage_repo,
+  $package_ensure                 = 'present',
+  $package_path                   = '/opt/nginx.deb'
   ### END Package Configuration ###
 
   ### START Service Configuation ###
@@ -209,12 +207,10 @@ class nginx (
   ### END DEPRECATION WARNING ###
 
   class { '::nginx::package':
-    package_name   => $package_name,
     package_source => $package_source,
     package_ensure => $package_ensure,
-    package_flavor => $package_flavor,
-    notify         => Class['::nginx::service'],
-    manage_repo    => $manage_repo,
+    package_path   => $package_path,
+    notify         => Class['::nginx::service']
   }
 
   ## This `if` statement is here in the event a user cannot use
